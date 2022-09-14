@@ -1,0 +1,47 @@
+# create resource group
+az group create --name shopshrg --location centralindia
+
+# create registry
+az acr create --resource-group shopshrg --name shopshacr --sku Basic
+
+# enable admin user on acr
+az acr update --name shopshacr --admin-enabled true
+
+# login
+az acr login --name shopshacr
+
+# tag and push images
+docker push shopshacr.azurecr.io/shoppingapi:v1
+docker push shopshacr.azurecr.io/shoppingclient:v1
+
+# list images
+az acr repository list --name shopshacr --output table
+az acr repository show --name shopshacr
+
+# create aks
+az aks create --resource-group shopshrg --name shopshaks --node-count 1 --node-vm-size standard_D2as_v4 --generate-ssh-keys --attach-acr shopshacr
+
+# install cli on aks
+az aks install-cli
+
+# get credentials
+az aks get-credentials --resource-group shopshrg --name shopshaks
+
+# verification
+kubectl get nodes
+kubectl get all
+kubectl config get-contexts
+kubectl config current-context
+kubectl config use-context shopshaks
+
+# create pull secret
+kubectl create secret docker-registry shacrsecret --docker-server=shopshacr.azurecr.io --docker-username=shopshacr --docker-password=iWJs=1W5ta7MzfM6spKNoKdmPHsLwLxd
+
+# watch
+kubectl get pod --watch
+
+# delete everything
+az group delete --name shopshrg 
+
+# delete AKS
+az aks delete --name shopshaks --resource-group shopshrg
