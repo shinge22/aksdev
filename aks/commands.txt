@@ -45,3 +45,5 @@ az group delete --name shopshrg
 
 # delete AKS
 az aks delete --name shopshaks --resource-group shopshrg
+
+# agent token bim5qsjlhuytou4qyicypsh7wszfwu6koxfaclmogjxhy6rldl2q
