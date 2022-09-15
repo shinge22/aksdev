@@ -35,7 +35,7 @@ kubectl config current-context
 kubectl config use-context shopshaks
 
 # create pull secret
-kubectl create secret docker-registry shacrsecret --docker-server=shopshacr.azurecr.io --docker-username=shopshacr --docker-password=iWJs=1W5ta7MzfM6spKNoKdmPHsLwLxd
+kubectl create secret docker-registry shacrsecret --docker-server=shopshacr.azurecr.io --docker-username=shopshacr --docker-password=lDgBPjj+XuSsZRpJqsT7Urapo62rp2K6
 
 # watch
 kubectl get pod --watch
