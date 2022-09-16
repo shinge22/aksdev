@@ -17,12 +17,12 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '94371b92-674f-4b62-80fa-cacd0f349bf1'
+  dockerRegistryServiceConnection: '9f08891c-32d7-4497-a21b-94789603f4ed'
   imageRepository: 'shoppingapi'
   containerRegistry: 'shopshacr.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'shopshacr64851598-auth'
+  imagePullSecret: 'shopshacr59a5-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -60,7 +60,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'shinge22shopping-2450.default'
+    environment: 'shinge22shopping-1643.default'
     strategy:
       runOnce:
         deploy:
