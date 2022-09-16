@@ -77,7 +77,10 @@ stages:
             inputs:
               action: deploy
               manifests: |
+                $(Pipeline.Workspace)/aks/mongona.yaml
+                $(Pipeline.Workspace)/aks/mongo-configmap.yaml
                 $(Pipeline.Workspace)/aks/shoppingapi.yaml
+                $(Pipeline.Workspace)/aks/shoppingapi-configmap.yaml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
