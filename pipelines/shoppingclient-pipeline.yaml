@@ -60,7 +60,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'shinge22shopping-1643.default'
+    environment: 'shinge22shopping.default'
     strategy:
       runOnce:
         deploy:
